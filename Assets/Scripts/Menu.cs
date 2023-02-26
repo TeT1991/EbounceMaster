@@ -85,13 +85,11 @@ public class Menu : MonoBehaviour
     {
         _shopWindow.SetActive(true);
         _gameManager.gameObject.SetActive(false);
-        Time.timeScale = 0;
     }
     public void OnCloseShopButtonClick()
     {
         _gameManager.gameObject.SetActive(true);
         _shopWindow.SetActive(false);
-        Time.timeScale = 1;
     }
 
 
