@@ -6,6 +6,8 @@ public class Coin : Obstacle
 {
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _lifeTime;
+    [SerializeField] private int _bonusScores;
+
     private WaitForSeconds _waitForSeconds;
     private BonusManager _bonusManager;
 
@@ -24,6 +26,8 @@ public class Coin : Obstacle
 
     public override void CollideAction()
     {
+        ScoresManager scoresManager = FindObjectOfType<ScoresManager>();
+        scoresManager.AddScores(_bonusScores);
         Destroy(gameObject);
     }
 
@@ -32,6 +36,5 @@ public class Coin : Obstacle
         yield return _waitForSeconds;
         _bonusManager.SetSpawnStatus();
         Destroy(gameObject);
-
     }
 }

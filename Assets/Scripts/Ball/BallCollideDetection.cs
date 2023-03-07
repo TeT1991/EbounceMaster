@@ -18,33 +18,34 @@ public class BallCollideDetection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_gameManager ==null)
+        if (_gameManager != null)
         {
-            Initialize();
-        }
-
-        if (_gameManager.CheckGameStarted())
-        {
-
-            if (_isFirstBounce)
+            if (_gameManager.CheckGameStarted())
             {
-                if (collision.gameObject.TryGetComponent<Obstacle>(out Obstacle obstacle))
+
+                if (_isFirstBounce)
                 {
-                    obstacle.CollideAction();
-                    Debug.Log("OBSTACLE");
+                    if (collision.gameObject.TryGetComponent<Obstacle>(out Obstacle obstacle))
+                    {
+                        obstacle.CollideAction();
+                        Debug.Log("OBSTACLE");
+                    }
+                }
+                else
+                {
+                    _isFirstBounce = true;
                 }
             }
-            else
-            {
-                _isFirstBounce = true;
-            }
+        }
+        else
+        {
+            Initialize();
         }
     }
 
     public void Initialize()
     {
             _gameManager = FindObjectOfType<GameManager>();
-        Debug.Log("INIT");
     }
 
 }

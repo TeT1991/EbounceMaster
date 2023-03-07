@@ -8,16 +8,17 @@ public class GameManager : SingletonMono<GameManager>
     [SerializeField] private BallJumper _ball;
     [SerializeField] private BallCollideDetection _ballCollideDetection;
     [SerializeField] private Menu _menu;
+    [SerializeField] private ScoresManager _scoresManager;
 
     public UnityEvent GameStarted;
     public UnityEvent GameFinished; 
     private bool _isGameStarted = false;
 
-
     private void Start()
     {
         GameStarted.AddListener(StartGame);
         GameFinished.AddListener(FinishGame);
+        GameFinished.AddListener(_scoresManager.ResetScores);
     }
 
     private void OnMouseDown()

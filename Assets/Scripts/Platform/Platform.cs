@@ -6,6 +6,7 @@ public class Platform : Obstacle
 {
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private List<Segment> _segments;
+    [SerializeField] private ScoresManager _scoresManager;    
 
     private void Start()
     {
@@ -17,7 +18,6 @@ public class Platform : Obstacle
         if(_ball == null)
         {
             LoadBall();
-            Debug.Log(_ball);
         }
 
         Ray ray = new Ray(_ball.transform.position, Vector3.down);
@@ -42,6 +42,7 @@ public class Platform : Obstacle
                     if (!segment.IsDangerous)
                     {
                         segment.ChangStatus();
+                        _scoresManager.AddScores(1);
                     }
                 }
                 else

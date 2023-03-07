@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using TMPro;
 
 public class ScoresManager : MonoBehaviour
 {
-    [SerializeField] private BallCollideDetection _ballCollideDetection;
+    [SerializeField] private TextMeshProUGUI _scoresText;
     private int _scoresCount = 0;
 
-    private void Start()
+    public void AddScores(int value)
     {
-        _ballCollideDetection.PlatformCollisionDetected.AddListener(AddScore);
+        Debug.Log("Add");
+        _scoresCount += value;
+        _scoresText.SetText("Scores: " + _scoresCount.ToString());
     }
 
-    private void AddScore()
+    public void ResetScores()
     {
-        _scoresCount++;
+        _scoresCount = 0;
+        _scoresText.SetText("");
     }
 }
