@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Segment : MonoBehaviour
 {
-    public SegmentTypes _type;
+    private SegmentTypes _type;
 
     public SegmentTypes Type => _type;
 

@@ -22,7 +22,7 @@ public class PlatformRotator : MonoBehaviour
         _rigidbody.maxAngularVelocity = _maxSpeed;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Rotate();
         TryStopTorque();

@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IInteractable 
 {
-    public void Activate(Vector3 position);
+    public void Interact(Vector3 position);
 }
